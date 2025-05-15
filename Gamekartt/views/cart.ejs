@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart - GameKart</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('/css/car.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 0 15px #000;
+        }
+
+        header h1 {
+            color: #FF5733;
+            font-size: 36px;
+        }
+
+        nav a {
+            color: #F1C40F;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF5733;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 0 15px #000;
+        }
+
+        h2 {
+            color: #F1C40F;
+            margin-bottom: 30px;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .cart-items {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #444;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .cart-item:hover {
+            color: #FF5733;
+            text-shadow: 0 0 5px #FF5733;
+        }
+
+        .remove-link {
+            color: #FF5733;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .remove-link:hover {
+            text-decoration: underline;
+            color: #F1C40F;
+        }
+
+        .cart-total {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .cart-total p {
+            font-size: 24px;
+            color: #F1C40F;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: #F1C40F;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+            box-shadow: 0 0 10px #000;
+        }
+
+        .btn:hover {
+            background-color: #FF5733;
+            color: #fff;
+            box-shadow: 0 0 20px #FF5733;
+        }
+
+        p {
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Cart</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/products">Products</a>
+            <% if (user) { %>
+                <a href="/logout">Logout</a>
+            <% } else { %>
+                <a href="/login">Login</a>
+            <% } %>
+        </nav>
+    </header>
+
+    <div class="container">
+        <% if (cart.length > 0) { %>
+            <h2>Items in Your Cart</h2>
+            <ul class="cart-items">
+                <% cart.forEach(item => { %>
+                    <li class="cart-item">
+                        <span><%= item.name %> - $<%= item.price %> x <%= item.quantity %></span>
+                        <a href="/cart/remove/<%= item.id %>" class="remove-link">Remove</a>
+                    </li>
+                <% }) %>
+            </ul>
+            
+            <div class="cart-total">
+                <p>Total: $<%= cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2) %></p>
+                <a href="/checkout" class="btn">Proceed to Checkout</a>
+            </div>
+        <% } else { %>
+            <p>Your cart is empty.</p>
+        <% } %>
+    </div>
+</body>
+</html>

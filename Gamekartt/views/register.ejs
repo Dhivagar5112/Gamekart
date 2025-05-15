@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register - GameKart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('/css/car.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px #FF5733;
+        }
+
+        header h1 {
+            color: #F1C40F;
+            font-size: 28px;
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #F1C40F;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #FF5733;
+            text-decoration: underline;
+        }
+
+        .register-container {
+            max-width: 450px;
+            margin: 100px auto;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 30px #FF5733;
+            text-align: center;
+        }
+
+        .register-container h2 {
+            color: #F1C40F;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+
+        .register-container form input {
+            width: 100%;
+            padding: 14px;
+            margin: 15px 0;
+            border: none;
+            border-radius: 12px;
+            background-color: #1a1a1a;
+            color: #fff;
+            font-size: 16px;
+            box-shadow: 0 0 8px #000 inset;
+            transition: 0.3s;
+        }
+
+        .register-container form input:focus {
+            outline: none;
+            box-shadow: 0 0 12px #FF5733;
+        }
+
+        .register-container form input::placeholder {
+            color: #aaa;
+        }
+
+        .register-container form button {
+            background-color: #F1C40F;
+            color: #000;
+            padding: 14px;
+            width: 100%;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .register-container form button:hover {
+            background-color: #FF5733;
+            color: #fff;
+            box-shadow: 0 0 15px #FF5733;
+        }
+
+        .register-container .alert {
+            margin-top: 20px;
+            background-color: #FF6347;
+            padding: 12px;
+            border-radius: 10px;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .register-container .login-link {
+            margin-top: 20px;
+            display: block;
+            color: #F1C40F;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .register-container .login-link:hover {
+            color: #FF5733;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>GameKart</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/auth/user-login">Login</a>
+        </nav>
+    </header>
+
+    <div class="register-container">
+        <h2>Create Account</h2>
+        <form method="POST" action="/auth/register">
+            <input name="name" placeholder="Full Name" required>
+            <input name="email" placeholder="Email" required type="email">
+            <input name="password" placeholder="Password" required type="password">
+            <button type="submit">Register</button>
+        </form>
+        <% if (message && message.length > 0) { %>
+            <p class="alert"><%= message %></p>
+        <% } %>
+
+        <a href="/auth/user-login" class="login-link">Already have an account? Login here</a>
+    </div>
+</body>
+</html>

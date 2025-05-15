@@ -1,0 +1,137 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('/css/car.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #ffffff;
+    padding: 20px;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+    color: #ff4d00; /* More aggressive racing red-orange */
+}
+
+a {
+    color: #ffd700; /* Racing yellow, clean against the dark header */
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #ff4d00;
+    text-decoration: underline;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 15px 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    backdrop-filter: blur(5px); /* Subtle glass effect */
+}
+
+nav a {
+    margin: 0 10px;
+    color: #ffd700;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #ff4d00;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.product-card {
+    background-color: rgba(15, 15, 15, 0.85); /* Deeper dark with better contrast */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ff4d00;
+}
+
+.product-card h3 {
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.product-card p {
+    margin-bottom: 10px;
+    color: #dddddd;
+}
+
+.btn {
+    background-color: #ffd700;
+    color: #000000;
+    padding: 12px 25px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn:hover {
+    background-color: #ff4d00;
+    color: #ffffff;
+}
+
+form input, form textarea, form button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 10px;
+    background-color: #1f1f1f;
+    color: #ffffff;
+}
+
+form button {
+    background-color: #ffd700;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+form button:hover {
+    background-color: #ff4d00;
+    color: #ffffff;
+}
+
+.alert {
+    padding: 12px;
+    background-color: #ff3b3b;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.hide-register,
+.hide-admin {
+    display: none;
+}

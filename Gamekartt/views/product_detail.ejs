@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.name %> - GameKart</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('/css/car.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 80px auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #FF5733;
+            text-align: center;
+        }
+
+        h1 {
+            color: #F1C40F;
+            font-size: 36px;
+            margin-bottom: 25px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            background-color: #F1C40F;
+            color: #000;
+            padding: 14px 28px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+            margin: 15px 5px;
+            box-shadow: 0 0 10px #000;
+        }
+
+        .btn:hover {
+            background-color: #FF5733;
+            color: #fff;
+            box-shadow: 0 0 20px #FF5733;
+        }
+
+        a.back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #F1C40F;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a.back-link:hover {
+            color: #FF5733;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><%= product.name %></h1>
+        <p><strong>Price:</strong> $<%= product.price %></p>
+        <p><%= product.description %></p>
+        
+        <% if (user) { %>
+            <a href="/cart/add/<%= product.id %>" class="btn">Add to Cart</a>
+        <% } else { %>
+            <p><a href="/auth/login" class="btn">Login to Add to Cart</a></p>
+        <% } %>
+        
+        <a href="/products" class="back-link">← Back to Products</a>
+    </div>
+</body>
+</html>

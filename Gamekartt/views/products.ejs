@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - GameKart</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('/css/car.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #f5f5f5;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 80px auto;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px #FF5733;
+        }
+
+        h1 {
+            color: #F1C40F;
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px #000;
+            transition: 0.3s;
+        }
+
+        li:hover {
+            box-shadow: 0 0 20px #FF5733;
+        }
+
+        a {
+            color: #F1C40F;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 18px;
+        }
+
+        a:hover {
+            color: #FF5733;
+            text-decoration: underline;
+        }
+
+        .btn-add {
+            background-color: #F1C40F;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-add:hover {
+            background-color: #FF5733;
+            color: #fff;
+            box-shadow: 0 0 15px #FF5733;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>All Products</h1>
+        <ul>
+            <% products.forEach(p => { %>
+                <li>
+                    <span>
+                        <a href="/products/<%= p.id %>"><%= p.name %></a> - $<%= p.price %>
+                    </span>
+                    <% if (user) { %> 
+                        <a href="/cart/add/<%= p.id %>" class="btn-add">Add to Cart</a> 
+                    <% } else { %>
+                        <a href="/auth/login" class="btn-add">Login to Add</a>
+                    <% } %>
+                </li>
+            <% }) %>
+        </ul>
+    </div>
+</body>
+</html>
